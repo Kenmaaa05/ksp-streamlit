@@ -1,11 +1,52 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import base64
 
 # --- Setup ---
 st.set_page_config(page_title="Kerbnik-1 Mission Analysis", layout="wide")
 st.title("🚀 Kerbnik-1 Mission Telemetry Analysis")
 st.markdown("A replica of Sputnik-1 in Kerbal Space Program.")
+
+def load_gif_top_right(gif_path, width=300):
+    with open(gif_path, "rb") as f:
+        gif_bytes = f.read()
+        encoded = base64.b64encode(gif_bytes).decode("utf-8")
+
+    st.markdown(
+        f"""
+        <style>
+        .fixed-gif {{
+            position: absolute;
+            top: -150px;
+            right: -50px;
+            z-index: 9999;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2px;
+            border-radius: 10px;
+            text-align: center;
+        }}
+        .fixed-gif img {{
+            border-radius: 8px;
+            width: {width}px;
+        }}
+        .fixed-gif p {{
+            color: white;
+            font-size: 14px;
+            margin-top: 4px;
+        }}
+        </style>
+
+        <div class="fixed-gif">
+            <img src="data:image/gif;base64,{encoded}" />
+            <p>Kerbnik-1 Orbit</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Call this
+load_gif_top_right("orbit.gif", width=300)
 
 # --- Load Data ---
 df = pd.read_csv("https://raw.githubusercontent.com/Kenmaaa05/ksp-streamlit/main/kerbnik_1_telemetry.csv")
