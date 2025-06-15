@@ -63,10 +63,10 @@ col9.metric("Inclination Drift", f"{inclination_change:.2e}°", f"±{inclination
 # --- Temperature ---
 st.subheader("Temperature")
 st.markdown(f"""
-- Max inside temp: **{max_inside_temp:,.4f} K**  
-- Max outside temp: **{max_outside_temp:,.4f} K**  
-- Inside dropped **{temp_drop_inside:,.2f} K** over {total_time:,.4f}s (~{rate_inside:,.4f} K/s)  
-- Outside dropped **{temp_drop_outside:,.2f} K** over {total_time:,.4f}s (~{rate_outside:,.4f} K/s)
+- Max inside temp: **{max_inside_temp:,.2f} K**  
+- Max outside temp: **{max_outside_temp:,.2f} K**  
+- Inside dropped **{temp_drop_inside:,.2f} K** over {total_time:,.2f}s (~{rate_inside:,.2f} K/s)  
+- Outside dropped **{temp_drop_outside:,.2f} K** over {total_time:,.2f}s (~{rate_outside:,.2f} K/s)
 """)
 
 # --- Verdict ---
