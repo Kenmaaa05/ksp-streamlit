@@ -46,27 +46,27 @@ inclination_std = df["Inclination (deg)"].std()
 # --- Metrics ---
 st.subheader("📊 Mission Summary")
 col1, col2, col3 = st.columns(3)
-col1.metric("Battery Start (%)", f"{battery_start:.4f}")
-col2.metric("Battery End (%)", f"{battery_min:.4f}")
-col3.metric("Battery Death Time (s)", f"{battery_end_time:.4f}")
+col1.metric("Battery Start (%)", f"{battery_start:,.4f}")
+col2.metric("Battery End (%)", f"{battery_min:,.4f}")
+col3.metric("Battery Death Time (s)", f"{battery_end_time:,.2f}")
 
 col4, col5, col6 = st.columns(3)
-col4.metric("Avg Battery Drain Rate", f"{battery_drain_rate:.4f} %/s")
-col5.metric("Max Velocity", f"{peak_velocity:.4f} m/s", f"at {velocity_time:.4f}s")
-col6.metric("Max Altitude", f"{max_altitude:.4f} m", f"at {altitude_time:.4f}s")
+col4.metric("Avg Battery Drain Rate", f"{battery_drain_rate:,.4f} %/s")
+col5.metric("Max Velocity", f"{peak_velocity:,.2f} m/s", f"at {velocity_time:,.2f}s")
+col6.metric("Max Altitude", f"{max_altitude:,.2f} m", f"at {altitude_time:,.2f}s")
 
 col7, col8, col9 = st.columns(3)
-col7.metric("Apoapsis Std Dev", f"{apoapsis_std:.4f} m")
-col8.metric("Periapsis Std Dev", f"{periapsis_std:.4f} m")
-col9.metric("Inclination Drift", f"{inclination_change:.4f}°", f"±{inclination_std:.4f}°")
+col7.metric("Apoapsis Std Dev", f"{apoapsis_std:,.4f} m")
+col8.metric("Periapsis Std Dev", f"{periapsis_std:,.4f} m")
+col9.metric("Inclination Drift", f"{inclination_change:.2e}°", f"±{inclination_std:.2e}°")
 
 # --- Temperature ---
 st.subheader("Temperature")
 st.markdown(f"""
-- Max inside temp: **{max_inside_temp} K**  
-- Max outside temp: **{max_outside_temp} K**  
-- Inside dropped **{temp_drop_inside:.2f} K** over {total_time:.4f}s (~{rate_inside:.4f} K/s)  
-- Outside dropped **{temp_drop_outside:.2f} K** over {total_time:.4f}s (~{rate_outside:.4f} K/s)
+- Max inside temp: **{max_inside_temp:,.4f} K**  
+- Max outside temp: **{max_outside_temp:,.4f} K**  
+- Inside dropped **{temp_drop_inside:,.2f} K** over {total_time:,.4f}s (~{rate_inside:,.4f} K/s)  
+- Outside dropped **{temp_drop_outside:,.2f} K** over {total_time:,.4f}s (~{rate_outside:,.4f} K/s)
 """)
 
 # --- Verdict ---
