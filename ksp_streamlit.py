@@ -8,7 +8,7 @@ st.title("🚀 Kerbnik-1 Mission Telemetry Analysis")
 st.markdown("A replica of Sputnik-1 in Kerbal Space Program.")
 
 # --- Load Data ---
-df = pd.read_csv("https://github.com/Kenmaaa05/ksp-streamlit/blob/main/kerbnik_1_telemetry.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/Kenmaaa05/ksp-streamlit/main/kerbnik_1_telemetry.csv")
 df.columns = df.columns.str.strip()
 
 # --- Calculations ---
